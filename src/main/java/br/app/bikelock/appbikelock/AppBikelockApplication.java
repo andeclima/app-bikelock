@@ -12,15 +12,13 @@ import br.app.bikelock.appbikelock.model.TipoBicicleta;
 import br.app.bikelock.appbikelock.model.TipoQuadro;
 import br.app.bikelock.appbikelock.repository.BicicletaRepository;
 import br.app.bikelock.appbikelock.repository.ClienteRepository;
+import br.app.bikelock.appbikelock.service.ClienteService;
 
 @SpringBootApplication
 public class AppBikelockApplication implements CommandLineRunner {
 
 	@Autowired
-	private ClienteRepository clienteRepository;
-	
-	@Autowired
-	private BicicletaRepository bicicletaRepository;
+	private ClienteService service;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppBikelockApplication.class, args);
@@ -35,7 +33,9 @@ public class AppBikelockApplication implements CommandLineRunner {
 		c1.setEmail("fulano@gmail.com");
 		c1.setMunicipio("Teresina");
 		c1.setUf("PI");
-		// clienteRepository.save(c1);
+		c1.setCpf("123.456.789-00");
+		c1.setTelefone("(86) 3123-4567");
+		service.adiciona(c1);
 
 		Bicicleta b1 = new Bicicleta();
 		b1.setNome("Fuscão Preto");
@@ -43,10 +43,7 @@ public class AppBikelockApplication implements CommandLineRunner {
 		b1.setModelo("Barra circular");
 		b1.setTipo(TipoBicicleta.MOUNTAIN_BIKE);
 		b1.setTipoQuadro(TipoQuadro.ALUMINIO);
-
-		bicicletaRepository.save(b1);
-		
-		c1.adicionaBicicleta(b1);
+		service.adicionaBicicleta(c1.getId(), b1);
 
 		Bicicleta b2 = new Bicicleta();
 		b2.setNome("Princesa");
@@ -54,12 +51,7 @@ public class AppBikelockApplication implements CommandLineRunner {
 		b2.setModelo("Elite 10");
 		b2.setTipo(TipoBicicleta.ESTRADA);
 		b2.setTipoQuadro(TipoQuadro.CARBONO);
-		
-		bicicletaRepository.save(b2);
-
-		c1.adicionaBicicleta(b2);
-
-		clienteRepository.save(c1);
+		service.adicionaBicicleta(c1.getId(), b2);
 
 	}
 

@@ -33,16 +33,17 @@ public class ClienteService {
     }
 
     // Adicionar um cliente
-    public void adiciona(Cliente cliente) {
+    public Cliente adiciona(Cliente cliente) {
         cliente.setId(null);
-        clienteRepository.save(cliente);
+        return clienteRepository.save(cliente);
     }
 
     // Atualizar um cliente
-    public void atualiza(Cliente cliente) {
+    public Cliente atualiza(Cliente cliente) {
         if (cliente.getId() != null) {
-            clienteRepository.save(cliente);
+            return clienteRepository.save(cliente);
         }
+        return null;
     }
 
     // Remover um cliente
@@ -74,27 +75,30 @@ public class ClienteService {
     }
 
     @Transactional
-    public void adicionaBicicleta(Long idCliente, Bicicleta bicicleta) {
+    public Bicicleta adicionaBicicleta(Long idCliente, Bicicleta bicicleta) {
         Cliente clienteEncontrado = busca(idCliente);
         if (clienteEncontrado != null) {
             bicicleta.setId(null);
-            bicicletaRepository.save(bicicleta);
+            Bicicleta nova = bicicletaRepository.save(bicicleta);
             clienteEncontrado.adicionaBicicleta(bicicleta);
             clienteRepository.save(clienteEncontrado);
+            return nova;
         }
+        return null;
     }
 
-    public void atualizaBicicleta(Long idCliente, Bicicleta bicicleta) {
+    public Bicicleta atualizaBicicleta(Long idCliente, Bicicleta bicicleta) {
         Cliente clienteEncontrado = busca(idCliente);
         if (clienteEncontrado != null) {
             if (bicicleta.getId() != null) {
                 for (Bicicleta item:clienteEncontrado.getBicicletas()) {
                     if (item.getId().equals(bicicleta.getId())) {
-                        bicicletaRepository.save(bicicleta);
+                        return bicicletaRepository.save(bicicleta);
                     }
                 }
             }
         }
+        return null;
     }
 
     public void removeBicicleta(Long idCliente, Long id) {
