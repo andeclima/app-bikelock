@@ -10,8 +10,6 @@ import br.app.bikelock.appbikelock.model.Bicicleta;
 import br.app.bikelock.appbikelock.model.Cliente;
 import br.app.bikelock.appbikelock.model.TipoBicicleta;
 import br.app.bikelock.appbikelock.model.TipoQuadro;
-import br.app.bikelock.appbikelock.repository.BicicletaRepository;
-import br.app.bikelock.appbikelock.repository.ClienteRepository;
 import br.app.bikelock.appbikelock.service.ClienteService;
 
 @SpringBootApplication
