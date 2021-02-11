@@ -1,0 +1,1 @@
+mysqldump -u root -p --default-character-set=utf8 bd-bikelock --result-file bikelock.sql

@@ -26,30 +26,30 @@ public class AppBikelockApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Cliente c1 = new Cliente();
-		c1.setNome("Fulano de Tal");
-		c1.setEmail("fulano@gmail.com");
-		c1.setMunicipio("Teresina");
-		c1.setUf("PI");
-		c1.setCpf("123.456.789-00");
-		c1.setTelefone("(86) 3123-4567");
-		service.adiciona(c1);
+		// Cliente c1 = new Cliente();
+		// c1.setNome("Fulano de Tal");
+		// c1.setEmail("fulano@gmail.com");
+		// c1.setMunicipio("Teresina");
+		// c1.setUf("PI");
+		// c1.setCpf("123.456.789-00");
+		// c1.setTelefone("(86) 3123-4567");
+		// service.adiciona(c1);
 
-		Bicicleta b1 = new Bicicleta();
-		b1.setNome("Fuscão Preto");
-		b1.setMarca("Caloi");
-		b1.setModelo("Barra circular");
-		b1.setTipo(TipoBicicleta.MOUNTAIN_BIKE);
-		b1.setTipoQuadro(TipoQuadro.ALUMINIO);
-		service.adicionaBicicleta(c1.getId(), b1);
+		// Bicicleta b1 = new Bicicleta();
+		// b1.setNome("Fuscão Preto");
+		// b1.setMarca("Caloi");
+		// b1.setModelo("Barra circular");
+		// b1.setTipo(TipoBicicleta.MOUNTAIN_BIKE);
+		// b1.setTipoQuadro(TipoQuadro.ALUMINIO);
+		// service.adicionaBicicleta(c1.getId(), b1);
 
-		Bicicleta b2 = new Bicicleta();
-		b2.setNome("Princesa");
-		b2.setMarca("Caloi");
-		b2.setModelo("Elite 10");
-		b2.setTipo(TipoBicicleta.ESTRADA);
-		b2.setTipoQuadro(TipoQuadro.CARBONO);
-		service.adicionaBicicleta(c1.getId(), b2);
+		// Bicicleta b2 = new Bicicleta();
+		// b2.setNome("Princesa");
+		// b2.setMarca("Caloi");
+		// b2.setModelo("Elite 10");
+		// b2.setTipo(TipoBicicleta.ESTRADA);
+		// b2.setTipoQuadro(TipoQuadro.CARBONO);
+		// service.adicionaBicicleta(c1.getId(), b2);
 
 	}
 
