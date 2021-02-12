@@ -6,17 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.app.bikelock.appbikelock.model.Bicicleta;
-import br.app.bikelock.appbikelock.model.Cliente;
-import br.app.bikelock.appbikelock.model.TipoBicicleta;
-import br.app.bikelock.appbikelock.model.TipoQuadro;
-import br.app.bikelock.appbikelock.service.ClienteService;
-
 @SpringBootApplication
 public class AppBikelockApplication implements CommandLineRunner {
-
-	@Autowired
-	private ClienteService service;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppBikelockApplication.class, args);
