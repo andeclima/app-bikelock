@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http.headers().frameOptions().disable();
         }
 
-        http.cors(); // .and().csrf().disable();
+        http.cors().and().csrf().disable();
 
         http.authorizeRequests()
             .antMatchers(URL_PUBLICAS).permitAll()
