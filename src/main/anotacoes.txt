@@ -1,1 +1,17 @@
 mysqldump -u root -p --default-character-set=utf8 bd-bikelock --result-file bikelock.sql
+
+CLEARDB_DATABASE_URL: mysql://b24d59871cdcad:109910b9@us-cdbr-east-03.cleardb.com/heroku_2fd9e2d3d43c5b0?reconnect=true
+
+HOST
+us-cdbr-east-03.cleardb.com
+
+USUARIO
+b24d59871cdcad
+
+SENHA
+109910b9
+
+NOME-BD
+heroku_2fd9e2d3d43c5b0
+
+mysql --host=us-cdbr-east-03.cleardb.com --user=b24d59871cdcad --password=109910b9 --reconnect heroku_2fd9e2d3d43c5b0 < bickelock.sql
