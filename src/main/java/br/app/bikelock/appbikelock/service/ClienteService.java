@@ -32,6 +32,24 @@ public class ClienteService {
         return clienteEncontrado.orElse(null);
     }
 
+    // Buscar um cliente por e-mail
+    public Cliente busca(String email) {
+        List<Cliente> lista = clienteRepository.findByEmail(email);
+        if (lista.size() > 0) {
+            return lista.get(0);
+        }
+        return null;
+    }
+
+    // Buscar um cliente por e-mail e senha
+    public Cliente login(String email, String senha) {
+        List<Cliente> lista = clienteRepository.findByEmail(email);
+        if (lista.size() > 0) {
+            return lista.get(0);
+        }
+        return null;
+    }
+
     // Adicionar um cliente
     public Cliente adiciona(Cliente cliente) {
         cliente.setId(null);

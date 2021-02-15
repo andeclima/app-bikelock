@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.app.bikelock.appbikelock.dto.BicicletaDTO;
 import br.app.bikelock.appbikelock.dto.ClienteDTO;
+import br.app.bikelock.appbikelock.dto.LoginDTO;
 import br.app.bikelock.appbikelock.model.Bicicleta;
 import br.app.bikelock.appbikelock.model.Cliente;
 import br.app.bikelock.appbikelock.service.ClienteService;
@@ -26,6 +27,15 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+    @PostMapping("/login")
+    public ResponseEntity<ClienteDTO> login(@RequestBody LoginDTO login) {
+        Cliente clienteEncontrado = service.login(login.getEmail(), login.getSenha());
+        if (clienteEncontrado != null) {
+            return ResponseEntity.ok().body(converteClienteDto(clienteEncontrado));
+        }
+        return ResponseEntity.notFound().build();
+    }
+    
     @GetMapping("/clientes")
     public ResponseEntity<List<ClienteDTO>> lista() {
         List<Cliente> lista = service.lista();
@@ -48,6 +58,10 @@ public class ClienteController {
     @PostMapping("/clientes")
     public ResponseEntity<ClienteDTO> adiciona(@RequestBody ClienteDTO dto) {
         Cliente cliente = converteDtoCliente(dto);
+        Cliente clienteExistente = service.busca(cliente.getEmail());
+        if (clienteExistente != null) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        }
         Cliente novo = service.adiciona(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(converteClienteDto(novo));
     }
